@@ -27,12 +27,12 @@ ORFS allows to select temporal samples with fixed size. ORSP select spatiotempor
 
 You can install the released version of SpotSampling from [CRAN](https://CRAN.R-project.org) with:
 
-``` r
+```
 install.packages("SpotSampling")
 ```
 
 You can install the latest version of SpotSampling with:
-``` r
+```
 devtools::install_github("EstherEustache/SpotSampling")
 ```
 
@@ -42,9 +42,8 @@ This is a basic example which shows you how to solve a common problem.
 We first consider 20 plots with spatial coordinates and 5 different points in time.
 Coordinates are generated randomly with function `runif`:
 
-```{r example}
+```{r example1}
 library(SpotSampling)
-
 N     <- 40
 T     <- 3
 coord <- cbind(x = runif(N), y = runif(N))
@@ -54,14 +53,14 @@ Matrix `pik` of size (20x5) contains temporal inclusion probabilities for each u
 Columns of \code{pik} correspond to the waves, and rows correspond to the units.
 Inclusion probabilities can be totally unequal. We choose to generate equal probabilities for all waves (with function `rep`):
 
-```{r example}
+```{r example2}
 pik <- matrix(rep(0.2, N*T), nrow = N, ncol = T)
 head(pik,5)
 ```
 
 So, we can use the SPOT method with the function `Spot`:
 
-```{r cars}
+```{r example3}
 S <- Spot(pik = pik, coord = coord)
 ```
 
