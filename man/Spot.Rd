@@ -11,7 +11,8 @@ Spot(pik, coord, EPS = 1e-06, comment = TRUE)
 Columns of \code{pik} correspond to the waves, and rows correspond to the units.
 Inclusion probabilities can be totally unequal.}
 
-\item{coord}{a matrix that contains spatial coordinates in columns. Matrix rows correspond to the units.}
+\item{coord}{a matrix that contains spatial coordinates in columns. The number of columns can be more than two.
+Matrix rows correspond to the units.}
 
 \item{EPS}{a tolerance parameter. Default value is 1e-6.}
 
@@ -43,7 +44,7 @@ Quenouille, M. H. (1949). Approximate Tests of Correlation in time-Series. Royal
 Grafstr om, A., Lundstr om, N. L. P., and Schelin, L. (2012). Spatially balanced sampling through the pivotal method. Biometrics, 68(2):514-520.
 }
 \seealso{
-\code{\link{SystematicDesign}}.
+\code{\link{SystematicDesign}}
 }
 \author{
 Esther Eustache \email{esther.eustache@unine.ch}

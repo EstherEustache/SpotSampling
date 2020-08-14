@@ -14,16 +14,19 @@ Inclusion probabilities can be totally unequal.}
 \item{coord}{a matrix that contains spatial coordinates in columns. The number of columns can be more than two.
 Matrix rows correspond to the units.}
 
-\item{L}{a parameter to achieve good spatial balanced. Default value is 1. See vignette for more details.}
+\item{L}{a parameter to achieve good spatial balanced (see details). Default value is 1.}
 
 \item{EPS}{a tolerance parameter. Default value is 1e-7.}
 }
 \value{
-new temporal inclusion probabilities.
+a matrix with the same size as \code{pik} that contains new temporal inclusion probabilities.
 }
 \description{
-Selection of an initial spread set using the cube method. Some inclusion probabilities are set to 0.
+Select an initial spread set using the landing phase of the cube method. Some inclusion probabilities are set to 0.
 The others probabilities are also modified so as not to change the sum of the inclusion probabilities.
+}
+\details{
+L blablabla
 }
 \examples{
 ## Coordinates in two dimensions of 4 units ##
@@ -36,6 +39,12 @@ pik <- matrix(c(0.6,0.3,0.3,
 ## Selection of an initial spread set ##
 Preselection(pik, coord)
 
+}
+\references{
+Grafstrom, A., Lundstrom, N. L. P., and Schelin, L. (2012). Spatially balanced sampling through the pivotal method. Biometrics, 68(2):514-520.
+}
+\seealso{
+\code{\link[sampling:fastflightcube]{fastflightcube}}
 }
 \author{
 Esther Eustache \email{esther.eustache@unine.ch}

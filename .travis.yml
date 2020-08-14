@@ -33,7 +33,7 @@ jobs:
     r: devel
 
 r_packages:
-- BalancedSampling
+  - BalancedSampling
   - sampling
   - stats
   - utils

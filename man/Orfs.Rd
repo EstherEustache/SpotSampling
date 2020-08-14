@@ -21,7 +21,7 @@ This is the update of \code{pik} and contains only 0s and 1s that indicates if a
 }
 \description{
 Select temporal samples with fixed size at each wave.
-It provides optimal time rotation of the selected sample using the systematic sampling method.
+It provides optimal time rotation of the selected samples using the systematic sampling method.
 }
 \examples{
 ## Temporal inclusion probabilities with 3 waves and 4 units ##

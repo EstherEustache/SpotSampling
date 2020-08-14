@@ -13,7 +13,8 @@ knitr::opts_chunk$set(
 )
 ```
 
-# SpotSampling
+# SpotSampling 
+[![Build Status](https://travis-ci.org/EstherEustache/SpotSampling.svg?branch=master)](https://https://travis-ci.org/github/EstherEustache/SpotSampling)
 
 <!-- badges: start -->
 <!-- badges: end -->

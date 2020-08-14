@@ -3,6 +3,9 @@
 
 # SpotSampling
 
+[![Build
+Status](https://travis-ci.org/EstherEustache/SpotSampling.svg?branch=master)](https://https://travis-ci.org/github/EstherEustache/SpotSampling)
+
 <!-- badges: start -->
 
 <!-- badges: end -->
@@ -44,12 +47,12 @@ N     <- 40
 T     <- 3
 coord <- cbind(x = runif(N), y = runif(N))
 head(coord,5)
-#>               x         y
-#> [1,] 0.01791573 0.2674862
-#> [2,] 0.54198269 0.8230343
-#> [3,] 0.10462870 0.2872756
-#> [4,] 0.53102786 0.5619326
-#> [5,] 0.52588507 0.1713512
+#>              x         y
+#> [1,] 0.9659957 0.6024497
+#> [2,] 0.3153598 0.8777810
+#> [3,] 0.3540338 0.4688682
+#> [4,] 0.3786499 0.9285913
+#> [5,] 0.3678536 0.8633033
 ```
 
 Matrix `pik` of size (20x5) contains temporal inclusion probabilities
@@ -77,11 +80,11 @@ S <- Spot(pik = pik, coord = coord)
 #> Beginning of the SPOT method.
 #> --------------------------------
 #> - Time number 1
-#> Sample selection time: 0.145895
+#> Sample selection time: 0.1558878
 #> - Time number 2
-#> Sample selection time: 0.03394198
+#> Sample selection time: 0.0369041
 #> - Time number 3
-#> Sample selection time: 0.02094007
+#> Sample selection time: 0.02094293
 #> 
 #> Landing phase required for 5 units.
 ```

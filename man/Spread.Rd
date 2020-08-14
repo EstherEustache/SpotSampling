@@ -7,8 +7,8 @@
 Spread(S, pik, coord, criteria)
 }
 \arguments{
-\item{S}{a matrix that contains several samples in columns. Matrix rows correspond to the units.
-It could be matrix of temporal samples returns by function \code{\link{Spot}}.}
+\item{S}{a matrix that contains samples in columns. Matrix rows correspond to the units.
+It could be matrix of temporal samples returned by function \code{\link{Spot}}.}
 
 \item{pik}{a matrix of temporal inclusion probabilities.
 Columns of \code{pik} correspond to samples, and rows correspond to the units.}
@@ -22,10 +22,10 @@ a vector that contains spreading measure values of the samples in columns of \co
 }
 \description{
 Measure the spread of several spatial samples depending on inclusion probabilities and spatial coordinates.
-Two spreading criteria are available: one based on the space partition of Voronoi polygons and one based on Moran's I index (see reference).
+Two spreading criteria are available: one based on the space partition of Voronoi polygons and one based on Moran's I index (see references).
 }
 \examples{
-setseed(1)
+set.seed(1)
 ## Coordinates in two dimensions of 10 units ##
 coord <- matrix(runif(10*2), ncol=2)
 ## Temporal inclusion probabilities with 3 waves and 4 units ##

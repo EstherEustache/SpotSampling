@@ -25,7 +25,7 @@
 #'
 #'
 #' @examples
-#' setseed(1)
+#' set.seed(1)
 #' ## Coordinates in two dimensions of 10 units ##
 #' coord <- matrix(runif(10*2), ncol=2)
 #' ## Temporal inclusion probabilities with 3 waves and 4 units ##

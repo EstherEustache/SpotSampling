@@ -2,7 +2,7 @@
 % Please edit documentation in R/ReducedSamplecube.R
 \name{ReducedSamplecube}
 \alias{ReducedSamplecube}
-\title{Cube method with reduction of the constraint matrix}
+\title{Cube method with reduction of the auxiliary variables matrix}
 \usage{
 ReducedSamplecube(X, pik, order = 2, method = 2, EPS = 1e-08)
 }
@@ -20,7 +20,7 @@ ReducedSamplecube(X, pik, order = 2, method = 2, EPS = 1e-08)
 \item{EPS}{a tolerance parameter. Default value is 1e-8.}
 }
 \value{
-Returns the updated vector of \code{pik} that contains only 0s and 1s that indicates if a unit is selected or not at each wave.
+the updated vector of \code{pik} that contains only 0s and 1s that indicates if a unit is selected or not at each wave.
 }
 \description{
 Modified cube method.
@@ -39,14 +39,14 @@ set.seed(1)
 ## Matrix of 8 auxilary variables and 10 units with lot of 0s ##
 X   <- matrix(sample(c(0,0,0,1),80,replace=TRUE), nrow = 10, ncol =  8)
 ## Inclusion probabilities with 10 units ##
-pik <- runif(10)
+pik <- stats::runif(10)
 ## Cube method ##
 ReducedSamplecube(X, pik, order = 2, method = 2)
 
 }
 \references{
 Chauvet, G. and Tille, Y. (2006). A fast algorithm of balanced sampling. Computational Statistics, 21/1:53-62
-}
-\seealso{
-\code{\link[sampling:samplecube]{samplecube}}, \code{\link[sampling:landingcube]{landingcube}}, \code{\link{ReducedFlightphase}}, \code{\link{ReducedMatrix}}.
+
+
+ @seealso \code{\link[sampling:samplecube]{samplecube}}, \code{\link[sampling:landingcube]{landingcube}}, \code{\link{ReducedFlightphase}}, \code{\link{ReducedMatrix}}
 }

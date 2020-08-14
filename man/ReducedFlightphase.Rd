@@ -2,7 +2,7 @@
 % Please edit documentation in R/ReducedFlightphase.R
 \name{ReducedFlightphase}
 \alias{ReducedFlightphase}
-\title{Flight phase of the cube method with matrix reduction}
+\title{Flight phase of the cube method with reduction of the auxiliary variables matrix}
 \usage{
 ReducedFlightphase(X, pik, order = 2, EPS = 1e-08)
 }
@@ -11,7 +11,7 @@ ReducedFlightphase(X, pik, order = 2, EPS = 1e-08)
 
 \item{pik}{a vector of size N with inclusion probabilities.}
 
-\item{order}{it specifies how the data must be rearrange. 1: the data are randomly arranged,
+\item{order}{it specifies how the data must be rearranged. 1: the data are randomly arranged,
 2: no change in data order (default value), 3: the data are sorted in decreasing order.}
 
 \item{EPS}{a tolerance parameter. Default value is 1e-8.}
@@ -21,21 +21,21 @@ the updated vector of \code{pik} with at most p values not equal to 0 or 1.
 }
 \description{
 Modified flight phase of the cube method.
-This function reduces considerably the execution time when the matrix of auxiliary variables \code{X} contains lot of 0s.
+This function reduces considerably the execution time when the matrix of auxiliary variables \code{X} contains lot of 0s (see details).
 It is based on the function \code{\link[sampling:fastflightcube]{fastflightcube}} from the package \code{sampling}.
 }
 \details{
 In case where the number of auxiliary variables is great (i.e. p very large), even if we use the fast implementation proposed by
 (Chauvet and Tille 2005), the problem is time consuming.
 This function reduces considerably the execution time when the matrix of auxiliary variables \code{X} contains lot of 0s.
-It considers a reduced matrix \code{X} by removing columns and rows that sum to 0 (\code{\link{ReducedMatrix}}).
+It considers a reduced matrix \code{X} by removing columns and rows that sum to 0 (see \code{\link{ReducedMatrix}}).
 }
 \examples{
 set.seed(1)
 ## Matrix of 8 auxilary variables and 10 units with lot of 0s ##
-X   <- matrix(sample(c(0,0,0,runif(1)), 80, replace=TRUE), nrow = 10, ncol =  8)
+X   <- matrix(sample(c(0,0,0,stats::runif(1)), 80, replace=TRUE), nrow = 10, ncol =  8)
 ## Inclusion probabilities with 10 units ##
-pik <- runif(10)
+pik <- stats::runif(10)
 ## Flight phase ##
 ReducedFlightphase(X, pik)
 
@@ -44,7 +44,7 @@ ReducedFlightphase(X, pik)
 Chauvet, G. and Tille, Y. (2006). A fast algorithm of balanced sampling. Computational Statistics, 21/1:53-62
 }
 \seealso{
-\code{\link[sampling:fastflightcube]{fastflightcube}}, \code{\link{ReducedMatrix}}.
+\code{\link[sampling:fastflightcube]{fastflightcube}}, \code{\link{ReducedMatrix}}
 }
 \author{
 Esther Eustache \email{esther.eustache@unine.ch}

@@ -12,14 +12,14 @@ ReducedMatrix(B)
 \value{
 Returns a list including:
 
-\code{BB} the reduced matrix B.
+\code{BB} the reduced matrix of \code{B}.
 
-\code{ind_col} a vector that containing the index of the remaining columns of \code{B} in \code{BB}.
+\code{ind_col} a vector that contains the index of the remaining columns of \code{B} in \code{BB}.
 
-\code{ind_row} a vector that containing the index of the remaining rows of \code{B} in \code{BB}.
+\code{ind_row} a vector that contains the index of the remaining rows of \code{B} in \code{BB}.
 }
 \description{
-Reduce matrix by removing alternatively columns and rows that sum to 0. If the matrix is dense or if every columns sums to more than 0, then nothing is changed.
+Reduce a matrix by removing alternatively columns and rows that sum to 0. If the matrix is dense or if every columns sums to more than 0, then nothing is changed.
 }
 \examples{
 set.seed(1)
