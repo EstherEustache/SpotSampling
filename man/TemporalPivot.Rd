@@ -7,11 +7,11 @@
 TemporalPivot(design1, design2, d, EPS = 1e-06)
 }
 \arguments{
-\item{design1}{a longitudinal systematic sampling designs of a first unit. The length of the longitudinal samples is \eqn{T}.
+\item{design1}{a longitudinal systematic sampling design of a first unit. The length of the longitudinal samples is \eqn{T}.
 It results from function \code{\link[SpotSampling:SystematicDesign]{SystematicDesign}}.}
 
-\item{design2}{a longitudinal systematic sampling designs of a second unit. The length of the longitudinal samples is \eqn{T}.
-It results from function \code{\link[SpotSampling:SystematicDesign]{SystematicDesign}}}
+\item{design2}{a longitudinal systematic sampling design of a second unit. The length of the longitudinal samples is \eqn{T}.
+It results from function \code{\link[SpotSampling:SystematicDesign]{SystematicDesign}}.}
 
 \item{d}{a vector of size T that specify for which time \eqn{t} a decision must be taken, with \eqn{1 \le t \le T}.
 \code{d} is such that the \eqn{t}-th element is equal to 1, and the others to 0.}
@@ -21,20 +21,20 @@ It results from function \code{\link[SpotSampling:SystematicDesign]{SystematicDe
 \value{
 Returns a list including:
 
-\code{p1_new} the updated probabilities of the longitudinal systematic sampling designs of the first unit.
+\code{p1_new} the updated probabilities of the longitudinal systematic sampling design of the first unit.
 
-\code{p2_new} the updated probabilities of the longitudinal systematic sampling designs of the second unit.
+\code{p2_new} the updated probabilities of the longitudinal systematic sampling design of the second unit.
 }
 \description{
-Consider longitudinal systematic sampling designs of two different units that result from function \code{\link{SystematicDesign}}.
-This function allows to decide if one of these 2 units is selected at a specific time by putting at least one of the samples selection probabilities to 0.
+This function considers longitudinal systematic sampling designs of two different units that result from function \code{\link{SystematicDesign}}.
+It allows to decide if one of these 2 units is selected at a specific time by putting at least one of the samples selection probabilities to 0.
 It is based on the local pivotal method.
 }
 \examples{
-## Vector of temporal inclusion probabilities with 3 waves ##
+## Vectors of temporal inclusion probabilities with 3 waves ##
 pik1   <- c(0.2,0.3,0.5) # of a first unit
 pik2   <- c(0.1,0.4,0.5) # of a second unit
-## Find the systematic sampling design of pik1 and pik2 ##
+## Find the systematic sampling designs of pik1 and pik2 ##
 design1 <- SystematicDesign(pik1, EPS = 1e-6)
 design2 <- SystematicDesign(pik2, EPS = 1e-6)
 ## The time we want to take a decision ##
@@ -53,7 +53,7 @@ Tille, Y. (2020). Sampling and Estimation from Finite Populations. John Wiley & 
 Grafstr om, A., Lundstr om, N. L. P., and Schelin, L. (2012). Spatially balanced sampling through the pivotal method. Biometrics, 68(2):514-520.
 }
 \seealso{
-\code{\link{SystematicDesign}}.
+\code{\link{SystematicDesign}}
 }
 \author{
 Esther Eustache \email{esther.eustache@unine.ch}

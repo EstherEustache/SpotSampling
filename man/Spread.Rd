@@ -15,10 +15,10 @@ Columns of \code{pik} correspond to samples, and rows correspond to the units.}
 
 \item{coord}{a matrix that contains spatial coordinates in columns. Matrix rows correspond to the units.}
 
-\item{criteria}{it specifies the criteria used to measure samples spreading. \code{criteria = "IB"}: the criteria based on Moran's I index is computed (see \code{\link[WaveSampling:IB]{IB}}), \code{criteria = "sb"}: the criteria based on Moran's I index is computed (see \code{\link[BalancedSampling:sb]{sb}}).}
+\item{criteria}{it specifies the criteria used to measure samples spreading. \code{criteria = "IB"}: the criteria based on Moran's I index is used (see \code{\link[WaveSampling:IB]{IB}}), \code{criteria = "sb"}: the criteria based on Moran's I index is used (see \code{\link[BalancedSampling:sb]{sb}}).}
 }
 \value{
-a vector that contains spreading measure values of the samples in columns of \code{S}.
+a vector that contains values of the spreading measure of the samples in columns of \code{S}.
 }
 \description{
 Measure the spread of several spatial samples depending on inclusion probabilities and spatial coordinates.
@@ -27,7 +27,7 @@ Two spreading criteria are available: one based on the space partition of Vorono
 \examples{
 set.seed(1)
 ## Coordinates in two dimensions of 10 units ##
-coord <- matrix(runif(10*2), ncol=2)
+coord <- matrix(stats::runif(10*2), ncol=2)
 ## Temporal inclusion probabilities with 3 waves and 4 units ##
 pik <- matrix(rep(0.2,10*3), ncol = 3, byrow = TRUE)
 ## Spot method to obtain temporal samples ##
@@ -38,6 +38,7 @@ Spread(S, pik, coord, criteria = 'IB')
 }
 \references{
 Grafstrom, A., Lundstrom, N. L. P., and Schelin, L. (2012). Spatially balanced sampling through the pivotal method. Biometrics, 68(2):514-520.
+
 Jauslin, R. and Tille, Y. (2019). Spatial spread sampling using weakly associated vectors. Statistical Office, University of Neuchatel.
 }
 \seealso{

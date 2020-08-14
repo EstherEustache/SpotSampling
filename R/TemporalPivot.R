@@ -1,15 +1,15 @@
 #' @title Adaptation of the local pivotal method on temporal samples
 #'
 #' @description
-#' Consider longitudinal systematic sampling designs of two different units that result from function \code{\link{SystematicDesign}}.
-#' This function allows to decide if one of these 2 units is selected at a specific time by putting at least one of the samples selection probabilities to 0.
+#' This function considers longitudinal systematic sampling designs of two different units that result from function \code{\link{SystematicDesign}}.
+#' It allows to decide if one of these 2 units is selected at a specific time by putting at least one of the samples selection probabilities to 0.
 #' It is based on the local pivotal method.
 #'
 #'
-#' @param design1 a longitudinal systematic sampling designs of a first unit. The length of the longitudinal samples is \eqn{T}.
+#' @param design1 a longitudinal systematic sampling design of a first unit. The length of the longitudinal samples is \eqn{T}.
 #' It results from function \code{\link[SpotSampling:SystematicDesign]{SystematicDesign}}.
-#' @param design2 a longitudinal systematic sampling designs of a second unit. The length of the longitudinal samples is \eqn{T}.
-#' It results from function \code{\link[SpotSampling:SystematicDesign]{SystematicDesign}}
+#' @param design2 a longitudinal systematic sampling design of a second unit. The length of the longitudinal samples is \eqn{T}.
+#' It results from function \code{\link[SpotSampling:SystematicDesign]{SystematicDesign}}.
 #' @param d a vector of size T that specify for which time \eqn{t} a decision must be taken, with \eqn{1 \le t \le T}.
 #' \code{d} is such that the \eqn{t}-th element is equal to 1, and the others to 0.
 #' @param EPS a tolerance parameter. Default value is 1e-6.
@@ -17,8 +17,8 @@
 #'
 #'
 #' @return Returns a list including:
-#' @return \code{p1_new} the updated probabilities of the longitudinal systematic sampling designs of the first unit.
-#' @return \code{p2_new} the updated probabilities of the longitudinal systematic sampling designs of the second unit.
+#' @return \code{p1_new} the updated probabilities of the longitudinal systematic sampling design of the first unit.
+#' @return \code{p2_new} the updated probabilities of the longitudinal systematic sampling design of the second unit.
 #'
 #'
 #' @author Esther Eustache \email{esther.eustache@@unine.ch}
@@ -32,14 +32,14 @@
 #' Grafstr om, A., Lundstr om, N. L. P., and Schelin, L. (2012). Spatially balanced sampling through the pivotal method. Biometrics, 68(2):514-520.
 #'
 #'
-#' @seealso \code{\link{SystematicDesign}}.
+#' @seealso \code{\link{SystematicDesign}}
 #'
 #'
 #' @examples
-#' ## Vector of temporal inclusion probabilities with 3 waves ##
+#' ## Vectors of temporal inclusion probabilities with 3 waves ##
 #' pik1   <- c(0.2,0.3,0.5) # of a first unit
 #' pik2   <- c(0.1,0.4,0.5) # of a second unit
-#' ## Find the systematic sampling design of pik1 and pik2 ##
+#' ## Find the systematic sampling designs of pik1 and pik2 ##
 #' design1 <- SystematicDesign(pik1, EPS = 1e-6)
 #' design2 <- SystematicDesign(pik2, EPS = 1e-6)
 #' ## The time we want to take a decision ##

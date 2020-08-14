@@ -17,7 +17,7 @@ Returns a list including:
 \code{samples} a matrix that contains the systematic samples in rows.
 The samples have the same length as vector \code{pik} and contains 0s and 1s that specify whether a unit is selected or not in the sample.
 
-\code{probas} a vector that contains the selection probability of each sample in \code{samples}.
+\code{probas} a vector that contains the selection probabilities of samples in \code{samples}.
 }
 \description{
 Find the systematic sampling design of an inclusion probabilities vector.

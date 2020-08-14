@@ -12,7 +12,7 @@
 #' @return Returns a list including:
 #' @return \code{samples} a matrix that contains the systematic samples in rows.
 #' The samples have the same length as vector \code{pik} and contains 0s and 1s that specify whether a unit is selected or not in the sample.
-#' @return \code{probas} a vector that contains the selection probability of each sample in \code{samples}.
+#' @return \code{probas} a vector that contains the selection probabilities of samples in \code{samples}.
 #'
 #'
 #' @references
