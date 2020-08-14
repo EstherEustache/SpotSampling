@@ -4,7 +4,7 @@
 # SpotSampling
 
 [![Build
-Status](https://travis-ci.org/EstherEustache/SpotSampling.svg?branch=master)](https://https://travis-ci.org/github/EstherEustache/SpotSampling)
+Status](https://travis-ci.org/EstherEustache/SpotSampling.svg?branch=master)](https://travis-ci.org/github/EstherEustache/SpotSampling)
 
 <!-- badges: start -->
 
@@ -48,11 +48,11 @@ T     <- 3
 coord <- cbind(x = runif(N), y = runif(N))
 head(coord,5)
 #>              x         y
-#> [1,] 0.9659957 0.6024497
-#> [2,] 0.3153598 0.8777810
-#> [3,] 0.3540338 0.4688682
-#> [4,] 0.3786499 0.9285913
-#> [5,] 0.3678536 0.8633033
+#> [1,] 0.5912372 0.7706658
+#> [2,] 0.9370806 0.4718848
+#> [3,] 0.1598300 0.5508609
+#> [4,] 0.6387200 0.2001585
+#> [5,] 0.1609654 0.5979674
 ```
 
 Matrix `pik` of size (20x5) contains temporal inclusion probabilities
@@ -80,13 +80,13 @@ S <- Spot(pik = pik, coord = coord)
 #> Beginning of the SPOT method.
 #> --------------------------------
 #> - Time number 1
-#> Sample selection time: 0.1558878
+#> Sample selection time: 0.1246879
 #> - Time number 2
-#> Sample selection time: 0.0369041
+#> Sample selection time: 0.04089117
 #> - Time number 3
-#> Sample selection time: 0.02094293
+#> Sample selection time: 0.02094007
 #> 
-#> Landing phase required for 5 units.
+#> Landing phase required for 4 units.
 ```
 
 We can plot the selected sample at each wave:
