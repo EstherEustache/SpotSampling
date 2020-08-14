@@ -1,0 +1,78 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# SpotSampling
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+In spatial data, information of two neighbouring units are generally very similar.
+For spatial sampling, it is therefore more efficient to select samples that are well spread out in space. Often, the interest lies not only in estimating a measure at one point in time, but rather in estimating several points in time to also study evolution.
+Three new methods called ORFS (Optimal Rotation with Fixed sample Size), ORSP (Optimal Rotation with SPread sample), and SPOT (SPatial and Optimally Temporal Sampling) are implemented in this package. 
+ORFS allows to select temporal samples with fixed size. ORSP select spatiotemporal samples with random size that are well spread out in space at each point in time. And SPOT generates spread samples with fixed sample size at each wave.
+
+## Installation
+
+You can install the released version of SpotSampling from [CRAN](https://CRAN.R-project.org) with:
+
+``` r
+install.packages("SpotSampling")
+```
+
+You can install the latest version of SpotSampling with:
+``` r
+devtools::install_github("EstherEustache/SpotSampling")
+```
+
+## Example
+
+This is a basic example which shows you how to solve a common problem.
+We first consider 20 plots with spatial coordinates and 5 different points in time.
+Coordinates are generated randomly with function `runif`:
+
+```{r example}
+library(SpotSampling)
+
+N     <- 40
+T     <- 3
+coord <- cbind(x = runif(N), y = runif(N))
+head(coord,5)
+```
+Matrix `pik` of size (20x5) contains temporal inclusion probabilities for each unit.
+Columns of \code{pik} correspond to the waves, and rows correspond to the units.
+Inclusion probabilities can be totally unequal. We choose to generate equal probabilities for all waves (with function `rep`):
+
+```{r example}
+pik <- matrix(rep(0.2, N*T), nrow = N, ncol = T)
+head(pik,5)
+```
+
+So, we can use the SPOT method with the function `Spot`:
+
+```{r cars}
+S <- Spot(pik = pik, coord = coord)
+```
+
+We can plot the selected sample at each wave:
+
+```{r pressure, echo = FALSE}
+  plot(coord[,1], coord[,2], xlab = 'x', ylab = 'y', main = 'Selected sample at wave 1')
+points(coord[S[,1] == 1,1], coord[S[,1] == 1,2], pch = 19, col = 'black')
+plot(coord[,1], coord[,2], xlab = 'x', ylab = 'y', main = 'Selected sample at wave 2')
+points(coord[S[,2] == 1,1], coord[S[,2] == 1,2], pch = 19, col = 'black')
+plot(coord[,1], coord[,2], xlab = 'x', ylab = 'y', main = 'Selected sample at wave 3')
+points(coord[S[,3] == 1,1], coord[S[,3] == 1,2], pch = 19, col = 'black')
+
+```

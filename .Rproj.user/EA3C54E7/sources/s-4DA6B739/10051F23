@@ -1,0 +1,24 @@
+{
+    "id": "10051F23",
+    "path": "C:/Users/eustachee/switchdrive/Spatio-temporal/package/SpotSampling/R/SystematicDesign.R",
+    "project_path": "R/SystematicDesign.R",
+    "type": "r_source",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1597236521206.0,
+    "source_on_save": false,
+    "relative_order": 10,
+    "properties": {
+        "cursorPosition": "17,3",
+        "scrollLine": "0"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1597237197,
+    "encoding": "ISO8859-1",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1597237197336,
+    "read_only": false,
+    "read_only_alternatives": []
+}
