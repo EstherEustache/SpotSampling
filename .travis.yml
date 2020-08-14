@@ -18,11 +18,11 @@ warnings_are_errors: false
 
 addons:
   apt:
-  packages:
-  - libudunits2-dev
-  - gdal-bin
-  - libgdal1-dev
-  - libproj-dev
+    packages:
+    - libudunits2-dev
+    - gdal-bin
+    - libgdal1-dev
+    - libproj-dev
 
 brew_packages:
   - udunits
@@ -30,7 +30,7 @@ brew_packages:
 jobs:
   exclude:
   - os: osx
-  r: devel
+    r: devel
 
 r_packages:
 - BalancedSampling
