@@ -43,13 +43,13 @@ onestep <- function(B,pik,EPS){
 #' It considers a reduced matrix \code{X} by removing columns and rows that sum to 0 (see  \code{\link{ReducedMatrix}}).
 #'
 #' Moreover, the landing by variable suppression is used.
-#' \code{t} specifies the maximum number of constraints that can potentially be removed during the landing phase.This means that the first (N-T) constraints in \code{X} can be exactly satisfied.
+#' \code{t} specifies the maximum number of constraints that can potentially be removed during the landing phase. This means that the first (N-T) constraints in \code{X} can be exactly satisfied.
 #'
 #'
 #' @return the updated vector of \code{pik} that contains only 0s and 1s that indicates if a unit is selected or not at each wave.
 #'
 #'
-#' @author Esther Eustache \email{esther.eustache@@unine.ch}
+#' @author Esther Eustache \email{esther.eustache@@unine.ch}, Raphael Jauslin \email{raphael.jauslin@@unine.ch}
 #'
 #'
 #' @references

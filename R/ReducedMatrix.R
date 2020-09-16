@@ -1,7 +1,7 @@
 #' @title Matrix reduction
 #'
 #' @description
-#' Reduce a matrix by removing alternatively columns and rows that sum to 0. If the matrix is dense or if every columns sums to more than 0, then nothing is changed.
+#' Reduce a matrix by removing alternatively columns and rows that sum to 0. If the matrix is dense or if every columns sum to more than 0, then nothing is changed.
 #'
 #'
 #' @param B a matrix that contains lot of 0s.
@@ -14,7 +14,6 @@
 #'
 #'
 #' @author Raphael Jauslin \email{raphael.jauslin@@unine.ch}
-#' Esther Eustache \email{esther.eustache@@unine.ch}
 #'
 #'
 #' @examples

@@ -37,8 +37,8 @@ Orfs(pik)
 Quenouille, M. H. (1949). Approximate Tests of Correlation in time-Series. Royal Statistical Society, Series B Vol. 11, No. 1 (1949), pp. 68-84.
 }
 \seealso{
-\code{\link{SystematicDesign}}, \code{\link{ReducedMatrix}}
+\code{\link{SystematicDesign}}, \code{\link{ReducedSamplecube}}
 }
 \author{
-Esther Eustache \email{esther.eustache@unine.ch}
+Esther Eustache \email{esther.eustache@unine.ch}, Raphael Jauslin \email{raphael.jauslin@unine.ch}
 }

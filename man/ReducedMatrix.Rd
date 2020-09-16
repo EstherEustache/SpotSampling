@@ -19,7 +19,7 @@ Returns a list including:
 \code{ind_row} a vector that contains the index of the remaining rows of \code{B} in \code{BB}.
 }
 \description{
-Reduce a matrix by removing alternatively columns and rows that sum to 0. If the matrix is dense or if every columns sums to more than 0, then nothing is changed.
+Reduce a matrix by removing alternatively columns and rows that sum to 0. If the matrix is dense or if every columns sum to more than 0, then nothing is changed.
 }
 \examples{
 set.seed(1)
@@ -29,5 +29,4 @@ ReducedMatrix(B)
 }
 \author{
 Raphael Jauslin \email{raphael.jauslin@unine.ch}
-Esther Eustache \email{esther.eustache@unine.ch}
 }

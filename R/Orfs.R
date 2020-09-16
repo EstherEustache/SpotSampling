@@ -16,14 +16,14 @@
 #' This is the update of \code{pik} and contains only 0s and 1s that indicates if a unit is selected or not at each wave.
 #'
 #'
-#' @author Esther Eustache \email{esther.eustache@@unine.ch}
+#' @author Esther Eustache \email{esther.eustache@@unine.ch}, Raphael Jauslin \email{raphael.jauslin@@unine.ch}
 #'
 #'
 #' @references
 #' Quenouille, M. H. (1949). Approximate Tests of Correlation in time-Series. Royal Statistical Society, Series B Vol. 11, No. 1 (1949), pp. 68-84.
 #'
 #'
-#' @seealso \code{\link{SystematicDesign}}, \code{\link{ReducedMatrix}}
+#' @seealso \code{\link{SystematicDesign}}, \code{\link{ReducedSamplecube}}
 #'
 #'
 #' @examples

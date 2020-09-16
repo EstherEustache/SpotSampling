@@ -30,7 +30,7 @@ This function reduces considerably the execution time when the matrix of auxilia
 It considers a reduced matrix \code{X} by removing columns and rows that sum to 0 (see  \code{\link{ReducedMatrix}}).
 
 Moreover, the landing by variable suppression is used.
-\code{t} specifies the maximum number of constraints that can potentially be removed during the landing phase.This means that the first (N-T) constraints in \code{X} can be exactly satisfied.
+\code{t} specifies the maximum number of constraints that can potentially be removed during the landing phase. This means that the first (N-T) constraints in \code{X} can be exactly satisfied.
 }
 \examples{
 set.seed(1)
@@ -60,5 +60,5 @@ Chauvet, G. and Tille, Y. (2006). A fast algorithm of balanced sampling. Computa
 \code{\link[sampling:samplecube]{samplecube}}, \code{\link[sampling:landingcube]{landingcube}}, \code{\link{ReducedMatrix}}.
 }
 \author{
-Esther Eustache \email{esther.eustache@unine.ch}
+Esther Eustache \email{esther.eustache@unine.ch}, Raphael Jauslin \email{raphael.jauslin@unine.ch}
 }
