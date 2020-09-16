@@ -11,7 +11,7 @@ os:
   - linux
   - osx
 
-dist: trusty
+dist: xenial
 osx_image: xcode9.4
 
 warnings_are_errors: false
