@@ -46,8 +46,19 @@
 #' @export
 Orsp <- function(pik, coord, EPS = 1e-6, comment = TRUE)
 {
+
+  ##----------------------------------------------------------------
+  ##                        Initialization                         -
+  ##----------------------------------------------------------------
+
   N <- nrow(pik)
   t <- ncol(pik)
+
+
+  ##---------------------------------------------------------------
+  ##                          Orsp method                         -
+  ##---------------------------------------------------------------
+
   if(comment){ cat("\n\nBeginning of the ORSP method.\n--------------------------------")}
   for(j in 1:(t-1))
   {
@@ -80,7 +91,10 @@ Orsp <- function(pik, coord, EPS = 1e-6, comment = TRUE)
   s[lpm]  <- 1
   pik[,t] <- s
   if(comment){ cat("\nSample selection time:",Sys.time()-start_time) }
+
+  ## rounding of probabilities in pik
   pik[pik > 1-EPS] <- 1
   pik[pik < EPS]   <- 0
+
   return(pik)
 }

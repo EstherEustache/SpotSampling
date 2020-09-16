@@ -3,7 +3,6 @@
 export(Orfs)
 export(Orsp)
 export(Preselection)
-export(ReducedFlightphase)
 export(ReducedMatrix)
 export(ReducedSamplecube)
 export(Spot)

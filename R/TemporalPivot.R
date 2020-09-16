@@ -52,12 +52,23 @@
 #' @export
 TemporalPivot <- function(design1, design2, d, EPS = 1e-6)
 {
+
+  ##----------------------------------------------------------------
+  ##                        Initialization                         -
+  ##----------------------------------------------------------------
+
   S1 <- design1$samples
   p1 <- design1$probas
   S2 <- design2$samples
   p2 <- design2$probas
   t <- ncol(S1)
   TT  <- T
+
+
+  ##----------------------------------------------------------------
+  ##                            Method                             -
+  ##----------------------------------------------------------------
+
   while(TT){
     TEST1 <- p1>EPS
     TEST2 <- p2>EPS
@@ -122,5 +133,6 @@ TemporalPivot <- function(design1, design2, d, EPS = 1e-6)
       TT <- F
     }
   }
+
   return(list(p1_new = p1, p2_new = p2))
 }

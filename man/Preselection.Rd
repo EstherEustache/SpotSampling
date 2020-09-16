@@ -4,7 +4,7 @@
 \alias{Preselection}
 \title{Selection of an initial spread set}
 \usage{
-Preselection(pik, coord, L = 1, EPS = 1e-07)
+Preselection(pik, coord, L = 1, EPS = 1e-09)
 }
 \arguments{
 \item{pik}{a matrix of temporal inclusion probabilities.
@@ -16,17 +16,18 @@ Matrix rows correspond to the units.}
 
 \item{L}{a parameter to achieve good spatial balanced (see details). Default value is 1.}
 
-\item{EPS}{a tolerance parameter. Default value is 1e-7.}
+\item{EPS}{a tolerance parameter. Default value is 1e-9.}
 }
 \value{
 a matrix with the same size as \code{pik} that contains new temporal inclusion probabilities.
+Some inclusion probabilities are updated to 0.
 }
 \description{
-Select an initial spread set using the landing phase of the cube method. Some inclusion probabilities are set to 0.
+Select an initial spread set using the flight phase of the local cube method. Some inclusion probabilities are set to 0.
 The others probabilities are also modified so as not to change the sum of the inclusion probabilities.
 }
 \details{
-L blablabla
+\code{L} is used to achieve good spatial balance. It must be equal to or larger than one.
 }
 \examples{
 ## Coordinates in two dimensions of 4 units ##

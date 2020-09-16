@@ -10,7 +10,7 @@
 #' Inclusion probabilities can be totally unequal.
 #' @param coord a matrix that contains spatial coordinates in columns. The number of columns can be more than two.
 #' Matrix rows correspond to the units.
-#' @param EPS a tolerance parameter. Default value is 1e-6.
+#' @param EPS a tolerance parameter. Default value is 1e-8.
 #' @param comment a comment is written during the execution if \code{comment} is TRUE (default value).
 #'
 #'
@@ -28,7 +28,7 @@
 #' Grafstr om, A., Lundstr om, N. L. P., and Schelin, L. (2012). Spatially balanced sampling through the pivotal method. Biometrics, 68(2):514-520.
 #'
 #'
-#' @seealso \code{\link{SystematicDesign}}
+#' @seealso \code{\link{SystematicDesign}}, \code{\link{ReducedSamplecube}}.
 #'
 #'
 #' @examples
@@ -43,11 +43,17 @@
 #' Spot(pik, coord, EPS = 1e-6)
 #'
 #' @export
-Spot <- function(pik, coord, EPS = 1e-6, comment = TRUE)
+Spot <- function(pik, coord, EPS = 1e-8, comment = TRUE)
 {
+
+  ##----------------------------------------------------------------
+  ##                        Initialization                         -
+  ##----------------------------------------------------------------
+
   N <- nrow(pik)
   t <- ncol(pik)
-  #----SYSTEMATIC SAMPLING
+
+  ## Systematic sampling
   res    <- SystematicDesign(pik[1,])
   S      <- as.matrix(res$samples)
   P      <- res$probas
@@ -59,9 +65,8 @@ Spot <- function(pik, coord, EPS = 1e-6, comment = TRUE)
     R    <- c(R, rep(i, each = length(res$probas)))
   }
   P      <- as.vector(P)
-  if(comment){ cat("\n\nBeginning of the SPOT method.\n--------------------------------")}
-  #----SPOT
-  #Create and sort pairs
+
+  ## Create and sort pairs
   coord <- as.matrix(coord)
   res   <- cbind(t(utils::combn(1:N, 2)), rep(0, N*(N-1)/2))
   for(i in 1:nrow(res)){
@@ -69,11 +74,18 @@ Spot <- function(pik, coord, EPS = 1e-6, comment = TRUE)
   }
   res   <- res[order(res[,3]),]
   pairs <- res[,1:2]
-  # method
+
+  ##----------------------------------------------------------------
+  ##                          Spot method                          -
+  ##----------------------------------------------------------------
+
+  if(comment){ cat("\n\nBeginning of the SPOT method.\n--------------------------------")}
+
+  ## flight phase
   d0       <- rep(0, t)
   for( t1 in 1:t ){
     if(comment){
-      cat("\n- Time number",t1)
+      cat("\n- Wave number",t1)
       start_time <- Sys.time()
     }
     index_pairs <- 1:nrow(pairs)
@@ -88,7 +100,7 @@ Spot <- function(pik, coord, EPS = 1e-6, comment = TRUE)
         }
       }
     }
-    while((sum(index_pairs)!=0)&&(r<length(index_pairs))){
+    while((sum(index_pairs)!=0) && (r<length(index_pairs))){
       r <- r+1
       if(index_pairs[r] != 0){
         u1  <- pairs[index_pairs[r],1]
@@ -109,8 +121,9 @@ Spot <- function(pik, coord, EPS = 1e-6, comment = TRUE)
         }
       }
 
-      if((sum(index_pairs) == 0)|(length(index_pairs)==1)){ break }
-      # remove pairs with 0 at each (2N) steps
+      if((sum(index_pairs) == 0)|(length(index_pairs)==1)|(length(index_pairs)==r)){ break }
+
+      ## remove pairs with 0 at each (2N) steps
       if(r > 2*N){
         index_pairs <- index_pairs[(r+1):length(index_pairs)][index_pairs[(r+1):length(index_pairs)]!=0]
         r           <- 0
@@ -118,6 +131,8 @@ Spot <- function(pik, coord, EPS = 1e-6, comment = TRUE)
     }
     if(comment){ cat("\nSample selection time:",Sys.time()-start_time) }
   }
+
+  ## Landing phase
   TEST <- (P < (1-EPS))&(P > EPS)
   if(sum(TEST) >= 1){
     RR        <- R[TEST]
@@ -133,12 +148,13 @@ Spot <- function(pik, coord, EPS = 1e-6, comment = TRUE)
 
     M           <- cbind(Z,SS)
     colnames(M) <- NULL
-    PLand                  <- ReducedSamplecube(PP*M, PP)
+    PLand                  <- ReducedSamplecube(PP*M, PP, redux = TRUE, t = ncol(M))
     PLand[PLand < EPS]     <- 0
     PLand[PLand > (1-EPS)] <- 1
     P[TEST]                <- PLand
   }else{
     if(comment){ cat("\n\nNo landing phase required.\n")}
   }
+
   return(S[P > (1-EPS),])
 }

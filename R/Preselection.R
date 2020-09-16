@@ -1,6 +1,6 @@
 #' @title Selection of an initial spread set
 #'
-#' @description Select an initial spread set using the landing phase of the cube method. Some inclusion probabilities are set to 0.
+#' @description Select an initial spread set using the flight phase of the local cube method. Some inclusion probabilities are set to 0.
 #' The others probabilities are also modified so as not to change the sum of the inclusion probabilities.
 #'
 #'
@@ -10,13 +10,14 @@
 #' @param coord a matrix that contains spatial coordinates in columns. The number of columns can be more than two.
 #' Matrix rows correspond to the units.
 #' @param L a parameter to achieve good spatial balanced (see details). Default value is 1.
-#' @param EPS a tolerance parameter. Default value is 1e-7.
+#' @param EPS a tolerance parameter. Default value is 1e-9.
 #'
 #'
-#' @details L blablabla
+#' @details \code{L} is used to achieve good spatial balance. It must be equal to or larger than one.
+#'
 #'
 #' @return a matrix with the same size as \code{pik} that contains new temporal inclusion probabilities.
-#'
+#' Some inclusion probabilities are updated to 0.
 #'
 #'
 #' @author Esther Eustache \email{esther.eustache@@unine.ch}
@@ -40,10 +41,8 @@
 #'
 #' @export
 
-Preselection <- function(pik, coord, L = 1, EPS = 1e-7)
+Preselection <- function(pik, coord, L = 1, EPS = 1e-9)
 {
-  EPS  <- sqrt(.Machine$double.eps)
-
   a    <- pmin(L*rowSums(pik),1)
   aa   <- a
   TEST <- (a < 1-EPS)
@@ -56,15 +55,11 @@ Preselection <- function(pik, coord, L = 1, EPS = 1e-7)
     }
     res       <- pik_a[,LOGIC]
 
-    aa[TEST]  <- sampling::fastflightcube(a[TEST],coord[TEST,]/100,as.matrix(res))
+    aa[TEST]  <- BalancedSampling::lcubeflightphase(a[TEST],coord[TEST,]/100,as.matrix(res))
     pik_b     <- aa/a*pik
   }else{
     pik_b   <- pik
   }
-  pik_new   <- (pik/pmin(rowSums(pik),1))
 
-  remove           <- rowSums(pik_b)<EPS
-  pik_new[remove,] <- 0
-
-  return(pik_new)
+  return(pik_b)
 }

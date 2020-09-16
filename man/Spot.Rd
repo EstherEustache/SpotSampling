@@ -4,7 +4,7 @@
 \alias{Spot}
 \title{SPOT method}
 \usage{
-Spot(pik, coord, EPS = 1e-06, comment = TRUE)
+Spot(pik, coord, EPS = 1e-08, comment = TRUE)
 }
 \arguments{
 \item{pik}{a matrix of temporal inclusion probabilities.
@@ -14,7 +14,7 @@ Inclusion probabilities can be totally unequal.}
 \item{coord}{a matrix that contains spatial coordinates in columns. The number of columns can be more than two.
 Matrix rows correspond to the units.}
 
-\item{EPS}{a tolerance parameter. Default value is 1e-6.}
+\item{EPS}{a tolerance parameter. Default value is 1e-8.}
 
 \item{comment}{a comment is written during the execution if \code{comment} is TRUE (default value).}
 }
@@ -44,7 +44,7 @@ Quenouille, M. H. (1949). Approximate Tests of Correlation in time-Series. Royal
 Grafstr om, A., Lundstr om, N. L. P., and Schelin, L. (2012). Spatially balanced sampling through the pivotal method. Biometrics, 68(2):514-520.
 }
 \seealso{
-\code{\link{SystematicDesign}}
+\code{\link{SystematicDesign}}, \code{\link{ReducedSamplecube}}.
 }
 \author{
 Esther Eustache \email{esther.eustache@unine.ch}

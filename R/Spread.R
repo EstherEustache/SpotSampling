@@ -1,5 +1,6 @@
 #' @title Spreading measure of several spatial samples
 #'
+#'
 #' @description Measure the spread of several spatial samples depending on inclusion probabilities and spatial coordinates.
 #' Two spreading criteria are available: one based on the space partition of Voronoi polygons and one based on Moran's I index (see references).
 #'
@@ -16,6 +17,7 @@
 #'
 #'
 #' @author Esther Eustache \email{esther.eustache@@unine.ch}
+#'
 #'
 #' @references Grafstrom, A., Lundstrom, N. L. P., and Schelin, L. (2012). Spatially balanced sampling through the pivotal method. Biometrics, 68(2):514-520.
 #'
@@ -39,9 +41,19 @@
 #' @export
 Spread <- function(S, pik, coord, criteria)
 {
+  ##----------------------------------------------------------------
+  ##                        Initialization                         -
+  ##----------------------------------------------------------------
+  EPS <- 1e-8
+  if((criteria == 'IB') & (sum(pik > 1-EPS) > 0)){ stop('Inclusion probabilities must be smaller than 1.')}
   N       <- nrow(pik)
   t       <- ncol(pik)
   measure <- rep(0,t)
+
+
+  ##----------------------------------------------------------------
+  ##                      Compute the criteria                     -
+  ##----------------------------------------------------------------
   for(i in 1:t){
     if(criteria == 'IB'){
       m.strat    <- WaveSampling::wpik(X = coord, pik = pik[,i])
@@ -53,5 +65,6 @@ Spread <- function(S, pik, coord, criteria)
       }
     }
   }
+
   return(measure)
 }

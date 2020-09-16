@@ -13,6 +13,10 @@
 #' @return \code{ind_row} a vector that contains the index of the remaining rows of \code{B} in \code{BB}.
 #'
 #'
+#' @author Raphael Jauslin \email{raphael.jauslin@@unine.ch}
+#' Esther Eustache \email{esther.eustache@@unine.ch}
+#'
+#'
 #' @examples
 #' set.seed(1)
 #' B  <- matrix(sample(c(0,0,0,1),80,replace=TRUE), nrow = 8, ncol =  10)
@@ -20,35 +24,48 @@
 #'
 #' @export
 ReducedMatrix <- function(B){
+
+  ##----------------------------------------------------------------
+  ##                        Initialization                         -
+  ##----------------------------------------------------------------
+
   EPS      <- 1e-8
   sums_col <- colSums(B)
   sums_row <- rowSums(B)
   BB       <- B
   ind_col  <- (1:ncol(B))
   ind_row  <- (1:nrow(B))
-  # loop while any colsums equal to 0 exists
-  while(any(sums_col < abs(EPS))){
-    # extract columns with sum larger than 0
-    col <- which(sums_col > abs(EPS))
+
+
+  ##---------------------------------------------------------------
+  ##                          Main loop                           -
+  ##---------------------------------------------------------------
+
+  while(any(abs(sums_col) < EPS)){
+
+    ## extract columns with sum larger than 0
+    col <- which(abs(sums_col) > EPS)
     if(length(col) <= 1){ break }
     BB      <- BB[,col]
     ind_col <- ind_col[col]
-    # extract rows with sum larger than 0
+
+    ## extract rows with sum larger than 0
     sums_row <- rowSums(BB)
-    row      <- which(sums_row > abs(EPS))
+    row      <- which(abs(sums_row) > EPS)
     if(length(row) <= 1){ break }
     BB       <- BB[row,]
     ind_row  <- ind_row[row]
+
     # if we have not enough row then compress B
     if(nrow(BB) > ncol(BB)){
       ind_row <- ind_row[1:(ncol(BB)+1)]
       BB      <- BB[1:(ncol(BB)+1),]
-    }else{
-        ind_col <- ind_col[1:(length(ind_row)-1)]
-        BB      <- BB[,1:length(ind_row)-1]
     }
-    # recompute
+
+    ## recompute
     sums_col <- colSums(BB)
   }
-  return(list(B = BB, ind_col = ind_col, ind_row = ind_row))
+
+
+  return(list(BB = BB, ind_col = ind_col, ind_row = ind_row))
 }

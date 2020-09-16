@@ -34,23 +34,40 @@
 #' @export
 SystematicDesign <- function(pik, EPS=1e-6)
 {
+  ## index of 0 and 1
+  zeros <- which(pik < EPS)
+  ones  <- which(pik > (1-EPS))
+
+  ## to sum to an integer
   pik1 <- c(pik,ceiling(sum(pik))-sum(pik))
   N    <- length(pik1)
+
+  ## Vk and r
   Vk   <- cumsum(pik1)
-  Vk1  <- Vk%%1
-  Vk1[Vk1>1-EPS] <- 0
+  Vk1  <- Vk-floor(Vk)
+  Vk1[Vk1>(1-EPS)] <- 0
   r    <- c(sort(Vk1), 1)
+
+  ## interval centers and p
   cent <- (r[1:N] + r[2:(N + 1)])/2
   p    <- r[2:(N + 1)] - r[1:N]
-  A    <- matrix(c(0, Vk), nrow = N + 1, ncol = N) - t(matrix(cent, nrow = N, ncol = N + 1))
-  A    <-  A%%1
-  M    <- matrix(as.integer(A[1:N, ] > A[2:(N + 1), ]), N, N)
-  M1   <- M[1:(N-1),]
-  if(0 %in% p){
-    M1 <- M1[ ,p!=0]
-    p  <- p[p!=0]
+
+  ## add 0 to Vk
+  A  <- t(matrix(c(0, Vk), nrow = N + 1, ncol = N)) - matrix(cent, nrow = N, ncol = N + 1)
+  A  <-  A-floor(A)
+  M  <- matrix(as.integer(A[ ,1:N] > A[ ,2:(N + 1)]), N, N)
+  M1 <- M[,1:(N-1)]
+
+  TEST <- p>EPS
+  if(any(!TEST)){
+    M1   <- M1[TEST,]
+    p    <- p[TEST]
   }
-  if(length(pik) == 1){ M1 <- t(M1) }
-  return(list(samples = t(M1), probas = p))
+  if(length(p) == 1){ M1 <- t(as.matrix(M1)) }
+
+  if(any(pik < EPS)){ M1[,which(pik < EPS)] <- 0 }
+  if(any(pik > 1-EPS)){ M1[,which(pik > 1-EPS)] <- 1 }
+
+  return(list(samples = M1, probas = p))
 }
 

@@ -4,20 +4,16 @@
 \alias{ReducedSamplecube}
 \title{Cube method with reduction of the auxiliary variables matrix}
 \usage{
-ReducedSamplecube(X, pik, order = 2, method = 2, EPS = 1e-08)
+ReducedSamplecube(X, pik, redux = TRUE, t)
 }
 \arguments{
 \item{X}{a matrix of size (N x p) of auxiliary variables on which the sample must be balanced.}
 
 \item{pik}{a vector of size N of inclusion probabilities.}
 
-\item{order}{it specifies how the data must be rearrange. 1: the data are randomly arranged (default value),
-2: no change in data order, 3: the data are sorted in decreasing order.}
+\item{redux}{a booleen value that specify if matrix \code{X} is reduced during the cube method. Default value is TRUE.}
 
-\item{method}{it specifies the method used to the landing phase of the cube method.
-1: for a landing phase by linear programming, 2: for a landing phase by suppression of variables (default value).}
-
-\item{EPS}{a tolerance parameter. Default value is 1e-8.}
+\item{t}{the maximum number of constraints that can potentially be removed during the landing phase.}
 }
 \value{
 the updated vector of \code{pik} that contains only 0s and 1s that indicates if a unit is selected or not at each wave.
@@ -31,22 +27,38 @@ It is based on the function \code{\link[sampling:samplecube]{samplecube}} from t
 In case where the number of auxiliary variables is great (i.e. p very large), even if we use the fast implementation proposed by
 (Chauvet and Tille 2005), the problem is time consuming.
 This function reduces considerably the execution time when the matrix of auxiliary variables \code{X} contains lot of 0s.
-It considers a reduced matrix \code{X} by removing columns and rows that sum to 0 in the flight phase of the method (see  \code{\link{ReducedMatrix}} and \code{\link{ReducedFlightphase}}).
-The landing phase remains the same as in \code{\link[sampling:samplecube]{samplecube}} (see also \code{\link[sampling:landingcube]{landingcube}}).
+It considers a reduced matrix \code{X} by removing columns and rows that sum to 0 (see  \code{\link{ReducedMatrix}}).
+
+Moreover, the landing by variable suppression is used.
+\code{t} specifies the maximum number of constraints that can potentially be removed during the landing phase.This means that the first (N-T) constraints in \code{X} can be exactly satisfied.
 }
 \examples{
 set.seed(1)
 ## Matrix of 8 auxilary variables and 10 units with lot of 0s ##
-X   <- matrix(sample(c(0,0,0,1),80,replace=TRUE), nrow = 10, ncol =  8)
+X <- matrix(c(0.6,0.0,0.0,0.0,
+              0.1,0.0,0.1,0.0,
+              0.3,0.0,0.0,0.3,
+              0.0,0.3,0.0,0.3,
+              0.0,0.6,0.0,0.0,
+              0.0,0.1,0.1,0.0), ncol = 4, byrow = TRUE)
+
 ## Inclusion probabilities with 10 units ##
-pik <- stats::runif(10)
+pik <- c(0.60,0.10,0.30,0.30,0.60,0.10)
+
+## parameter t ##
+t <- 2
+
 ## Cube method ##
-ReducedSamplecube(X, pik, order = 2, method = 2)
+s   <- ReducedSamplecube(X, pik, redux = TRUE, t)
+s
 
 }
 \references{
 Chauvet, G. and Tille, Y. (2006). A fast algorithm of balanced sampling. Computational Statistics, 21/1:53-62
-
-
- @seealso \code{\link[sampling:samplecube]{samplecube}}, \code{\link[sampling:landingcube]{landingcube}}, \code{\link{ReducedFlightphase}}, \code{\link{ReducedMatrix}}
+}
+\seealso{
+\code{\link[sampling:samplecube]{samplecube}}, \code{\link[sampling:landingcube]{landingcube}}, \code{\link{ReducedMatrix}}.
+}
+\author{
+Esther Eustache \email{esther.eustache@unine.ch}
 }
