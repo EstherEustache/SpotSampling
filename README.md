@@ -10,11 +10,11 @@ Status](https://travis-ci.org/EstherEustache/SpotSampling.svg?branch=master)](ht
 
 <!-- badges: end -->
 
-In spatial data, information of two neighbouring units are generally
-very similar. For spatial sampling, it is therefore more efficient to
-select samples that are well spread out in space. Often, the interest
-lies not only in estimating a measure at one point in time, but rather
-in estimating several points in time to also study evolution. Three new
+In spatial data, information of two neighboring units are generally very
+similar. For spatial sampling, it is therefore more efficient to select
+samples that are well spread out in space. Often, the interest lies not
+only in estimating a measure at one point in time, but rather in
+estimating several points in time to also study evolution. Three new
 methods called ORFS (Optimal Rotation with Fixed sample Size), ORSP
 (Optimal Rotation with SPread sample), and SPOT (SPatial and Optimally
 Temporal Sampling) are implemented in this package. ORFS allows to
@@ -47,12 +47,12 @@ N     <- 40
 T     <- 3
 coord <- cbind(x = runif(N), y = runif(N))
 head(coord,5)
-#>              x         y
-#> [1,] 0.5912372 0.7706658
-#> [2,] 0.9370806 0.4718848
-#> [3,] 0.1598300 0.5508609
-#> [4,] 0.6387200 0.2001585
-#> [5,] 0.1609654 0.5979674
+#>              x           y
+#> [1,] 0.1102080 0.648869478
+#> [2,] 0.2005478 0.115149787
+#> [3,] 0.9444918 0.007348981
+#> [4,] 0.1592700 0.982639316
+#> [5,] 0.4649250 0.606393984
 ```
 
 Matrix `pik` of size (20x5) contains temporal inclusion probabilities
@@ -80,13 +80,13 @@ S <- Spot(pik = pik, coord = coord)
 #> Beginning of the SPOT method.
 #> --------------------------------
 #> - Time number 1
-#> Sample selection time: 0.1246879
+#> Sample selection time: 0.1419511
 #> - Time number 2
-#> Sample selection time: 0.04089117
+#> Sample selection time: 0.03490901
 #> - Time number 3
-#> Sample selection time: 0.02094007
+#> Sample selection time: 0.01794982
 #> 
-#> Landing phase required for 4 units.
+#> Landing phase required for 5 units.
 ```
 
 We can plot the selected sample at each wave:

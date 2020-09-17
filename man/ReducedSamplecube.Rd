@@ -11,7 +11,7 @@ ReducedSamplecube(X, pik, redux = TRUE, t)
 
 \item{pik}{a vector of size N of inclusion probabilities.}
 
-\item{redux}{a booleen value that specify if matrix \code{X} is reduced during the cube method. Default value is TRUE.}
+\item{redux}{a boolean value that specify if matrix \code{X} is reduced during the cube method. Default value is TRUE.}
 
 \item{t}{the maximum number of constraints that can potentially be removed during the landing phase.}
 }

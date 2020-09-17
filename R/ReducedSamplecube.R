@@ -33,7 +33,7 @@ onestep <- function(B,pik,EPS){
 #'
 #' @param X a matrix of size (N x p) of auxiliary variables on which the sample must be balanced.
 #' @param pik a vector of size N of inclusion probabilities.
-#' @param redux a booleen value that specify if matrix \code{X} is reduced during the cube method. Default value is TRUE.
+#' @param redux a boolean value that specify if matrix \code{X} is reduced during the cube method. Default value is TRUE.
 #' @param t the maximum number of constraints that can potentially be removed during the landing phase.
 #'
 #'

@@ -1,6 +1,6 @@
 Package: SpotSampling
 Type: Package
-Title: SPatial and Optimally Temporal (SPOT) sampling
+Title: SPatial and Optimally Temporal (SPOT) Sampling
 Version: 0.1.0
 Authors@R: c(
   person("Esther", "Eustache", email = "esther.eustache@unine.ch",role = c("aut", "cre")
@@ -11,8 +11,7 @@ Authors@R: c(
   person("Yves", "Tille",role = c("aut"),
     comment = c(ORCID = "0000-0003-0904-5523"))
   )
-Maintainer: The package maintainer <esther.eustache@unine.ch>
-Description: In spatial data, information of two neighbouring units are generally very similar. 
+Description: In spatial data, information of two neighboring units are generally very similar. 
   For spatial sampling, it is therefore more efficient to select samples that are well spread out in space. Often, the interest lies not only in estimating a measure at one point in time, but rather in estimating several points in time to also study the evolution. 
   Three new methods called ORFS (Optimal Rotation with Fixed sample Size), ORSP (Optimal Rotation with SPread sample), and SPOT (SPatial and Optimally Temporal Sampling) are implemented in this package. ORFS allows to select temporal samples with fixed size. ORSP selects spatiotemporal samples with random size that are well spread out in space at each point in time. And SPOT generates spread sample with fixed sample size at each wave. These methods provide an optimal time rotation of the selected units using the systematic sampling.
 License: GPL (>=2)

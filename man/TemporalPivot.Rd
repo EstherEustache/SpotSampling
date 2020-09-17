@@ -50,7 +50,7 @@ Quenouille, M. H. (1949). Approximate Tests of Correlation in time-Series. Royal
 
 Tille, Y. (2020). Sampling and Estimation from Finite Populations. John Wiley & Sons, 91(4), page 89.
 
-Grafstr om, A., Lundstr om, N. L. P., and Schelin, L. (2012). Spatially balanced sampling through the pivotal method. Biometrics, 68(2):514-520.
+Grafstrom, A., Lundstrom, N. L. P., and Schelin, L. (2012). Spatially balanced sampling through the pivotal method. Biometrics, 68(2):514-520.
 }
 \seealso{
 \code{\link{SystematicDesign}}
