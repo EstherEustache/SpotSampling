@@ -1,7 +1,7 @@
 #' @title SPOT method
 #'
 #' @description
-#' Select spatiotemporal samples of fixed size and well spread out in space at each wave.
+#' Select spatio-temporal samples of fixed size and well spread out in space at each wave.
 #' The pivotal method is used to obtain spread samples. It provides optimal time rotation of the selected sample using the systematic sampling method.
 #'
 #'

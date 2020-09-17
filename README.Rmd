@@ -21,8 +21,8 @@ knitr::opts_chunk$set(
 
 In spatial data, information of two neighboring units are generally very similar.
 For spatial sampling, it is therefore more efficient to select samples that are well spread out in space. Often, the interest lies not only in estimating a measure at one point in time, but rather in estimating several points in time to also study evolution.
-Three new methods called ORFS (Optimal Rotation with Fixed sample Size), ORSP (Optimal Rotation with SPread sample), and SPOT (SPatial and Optimally Temporal Sampling) are implemented in this package. 
-ORFS allows to select temporal samples with fixed size. ORSP select spatiotemporal samples with random size that are well spread out in space at each point in time. And SPOT generates spread samples with fixed sample size at each wave.
+Three new methods called ORFS (Optimal Rotation with Fixed sample Size), ORSP (Optimal Rotation with Spread sample), and SPOT (Spatial and Optimally Temporal Sampling) are implemented in this package. 
+ORFS allows to select temporal samples with fixed size. ORSP select spatio-temporal samples with random size that are well spread out in space at each point in time. And SPOT generates spread samples with fixed sample size at each wave.
 
 ## Installation
 

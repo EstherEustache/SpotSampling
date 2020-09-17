@@ -19,11 +19,11 @@ Matrix rows correspond to the units.}
 \item{comment}{a comment is written during the execution if \code{comment} is TRUE (default value).}
 }
 \value{
-a matrix that contains spatiotemporal samples.
+a matrix that contains spatio-temporal samples.
 This is the update of \code{pik} and contains only 0s and 1s that indicates if a unit is selected or not at each wave.
 }
 \description{
-Select spatiotemporal samples with random size and well spread out in space at each wave.
+Select spatio-temporal samples with random size and well spread out in space at each wave.
 The pivotal method is used to obtain spread samples. It provides optimal time rotation of the selected sample using the systematic sampling method.
 }
 \examples{

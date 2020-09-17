@@ -16,9 +16,9 @@ samples that are well spread out in space. Often, the interest lies not
 only in estimating a measure at one point in time, but rather in
 estimating several points in time to also study evolution. Three new
 methods called ORFS (Optimal Rotation with Fixed sample Size), ORSP
-(Optimal Rotation with SPread sample), and SPOT (SPatial and Optimally
+(Optimal Rotation with Spread sample), and SPOT (Spatial and Optimally
 Temporal Sampling) are implemented in this package. ORFS allows to
-select temporal samples with fixed size. ORSP select spatiotemporal
+select temporal samples with fixed size. ORSP select spatio-temporal
 samples with random size that are well spread out in space at each point
 in time. And SPOT generates spread samples with fixed sample size at
 each wave.
@@ -47,12 +47,12 @@ N     <- 40
 T     <- 3
 coord <- cbind(x = runif(N), y = runif(N))
 head(coord,5)
-#>              x           y
-#> [1,] 0.1102080 0.648869478
-#> [2,] 0.2005478 0.115149787
-#> [3,] 0.9444918 0.007348981
-#> [4,] 0.1592700 0.982639316
-#> [5,] 0.4649250 0.606393984
+#>              x          y
+#> [1,] 0.1290909 0.69662789
+#> [2,] 0.2026614 0.24602977
+#> [3,] 0.3183634 0.20790377
+#> [4,] 0.5754210 0.08155243
+#> [5,] 0.5846721 0.79485289
 ```
 
 Matrix `pik` of size (20x5) contains temporal inclusion probabilities
@@ -80,11 +80,11 @@ S <- Spot(pik = pik, coord = coord)
 #> Beginning of the SPOT method.
 #> --------------------------------
 #> - Time number 1
-#> Sample selection time: 0.1419511
+#> Sample selection time: 0.1403811
 #> - Time number 2
-#> Sample selection time: 0.03490901
+#> Sample selection time: 0.03091693
 #> - Time number 3
-#> Sample selection time: 0.01794982
+#> Sample selection time: 0.01894999
 #> 
 #> Landing phase required for 5 units.
 ```
